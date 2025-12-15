@@ -51,7 +51,7 @@
     size: Normal
     heldPrefix: rods
   - type: Construction
-    graph: MetalRod
+    graph: GasPipe #Space Prototype change
     node: MetalRod
   - type: Appearance
   - type: FloorTile

@@ -94,7 +94,7 @@
     - AnomalyHost
   - type: PointLight
     radius: 1.4
-    energy: 0.4
+    energy: 0.45
     color: "#ff8227"
   - type: Fixtures
     fixtures:

@@ -11,7 +11,7 @@
   - type: Fiber
     fiberColor: fibers-white
   - type: Clothing
-    slots: [gloves]
+    slots: [gloves, FEET]
   - type: Edible
     requiresSpecialDigestion: true
   - type: Item
@@ -28,6 +28,15 @@
     tags:
     - ClothMade
     - WhitelistChameleon
+    - SpecimanShoes
+  - type: Butcherable
+    butcheringType: Knife
+    spawned:
+    - id: MaterialCloth1
+      amount: 1
+  - type: PhysicalComposition # 50% of the amount of cloth you'd obtain upon butchering
+    materialComposition:
+      Cloth: 50
 
 - type: entity
   id: MittsBlackPink

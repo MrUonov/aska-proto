@@ -4,102 +4,139 @@
   graph:
   - node: start
     edges:
-    - to: half
+    #Space Prototype changes start
+    - to: notCompleted
       steps:
       - material: Steel
-        amount: 1
+        amount: 2
+        doAfter: 2
+
+  - node: notCompleted
+    entity: RodNotCompleted
+    edges:
+    - to: MetalRod
+      steps:
+      - tool: Slicing
+        doAfter: 4
+
+    - to: half
+      steps:
+      - tool: Welding
+        doAfter: 1
+      - tool: Anchoring
         doAfter: 1
 
     - to: halfAlt1
       steps:
-      - material: Steel
-        amount: 1
+      - tool: Welding
+        doAfter: 1
+      - tool: Anchoring
         doAfter: 1
 
     - to: halfAlt2
       steps:
-      - material: Steel
-        amount: 1
+      - tool: Welding
+        doAfter: 1
+      - tool: Anchoring
         doAfter: 1
 
     - to: straight
       steps:
-      - material: Steel
-        amount: 1
+      - tool: Welding
+        doAfter: 1
+      - tool: Anchoring
         doAfter: 1
 
     - to: straightAlt1
       steps:
-      - material: Steel
-        amount: 1
+      - tool: Welding
+        doAfter: 1
+      - tool: Anchoring
         doAfter: 1
 
     - to: straightAlt2
       steps:
-      - material: Steel
-        amount: 1
+      - tool: Welding
+        doAfter: 1
+      - tool: Anchoring
         doAfter: 1
 
     - to: bend
       steps:
-      - material: Steel
-        amount: 1
+      - tool: Welding
+        doAfter: 1
+      - tool: Anchoring
         doAfter: 1
 
     - to: bendAlt1
       steps:
-      - material: Steel
-        amount: 1
+      - tool: Welding
+        doAfter: 1
+      - tool: Anchoring
         doAfter: 1
 
     - to: bendAlt2
       steps:
-      - material: Steel
-        amount: 1
+      - tool: Welding
+        doAfter: 1
+      - tool: Anchoring
         doAfter: 1
 
     - to: tjunction
       steps:
-      - material: Steel
-        amount: 1
+      - tool: Welding
+        doAfter: 1
+      - tool: Anchoring
         doAfter: 1
 
     - to: tjunctionAlt1
       steps:
-      - material: Steel
-        amount: 1
+      - tool: Welding
+        doAfter: 1
+      - tool: Anchoring
         doAfter: 1
 
     - to: tjunctionAlt2
       steps:
-      - material: Steel
-        amount: 1
+      - tool: Welding
+        doAfter: 1
+      - tool: Anchoring
         doAfter: 1
 
     - to: fourway
       steps:
-      - material: Steel
-        amount: 1
+      - tool: Welding
+        doAfter: 1
+      - tool: Anchoring
         doAfter: 1
 
     - to: fourwayAlt1
       steps:
-      - material: Steel
-        amount: 1
+      - tool: Welding
+        doAfter: 1
+      - tool: Anchoring
         doAfter: 1
 
     - to: fourwayAlt2
       steps:
-      - material: Steel
-        amount: 1
+      - tool: Welding
+        doAfter: 1
+      - tool: Anchoring
         doAfter: 1
 
     - to: manifold
       steps:
+      - tool: Welding
+        doAfter: 1
       - material: Steel
-        amount: 2
+        amount: 1
+        doAfter: 1
+      - tool: Anchoring
         doAfter: 1
 
+  - node: MetalRod
+    entity: PartRodMetal3
+  #Space Prototype changes end
   - node: half
     entity: GasPipeHalf
     edges:
@@ -110,7 +147,7 @@
       completed:
       - !type:SpawnPrototype
         prototype: SheetSteel1
-        amount: 1
+        amount: 2
       - !type:DeleteEntity
       steps:
       - tool: Welding
@@ -126,7 +163,7 @@
       completed:
       - !type:SpawnPrototype
         prototype: SheetSteel1
-        amount: 1
+        amount: 2
       - !type:DeleteEntity
       steps:
       - tool: Welding
@@ -142,7 +179,7 @@
       completed:
       - !type:SpawnPrototype
         prototype: SheetSteel1
-        amount: 1
+        amount: 2
       - !type:DeleteEntity
       steps:
       - tool: Welding
@@ -158,7 +195,7 @@
       completed:
       - !type:SpawnPrototype
         prototype: SheetSteel1
-        amount: 1
+        amount: 2
       - !type:DeleteEntity
       steps:
       - tool: Welding
@@ -174,7 +211,7 @@
       completed:
       - !type:SpawnPrototype
         prototype: SheetSteel1
-        amount: 1
+        amount: 2
       - !type:DeleteEntity
       steps:
       - tool: Welding
@@ -190,7 +227,7 @@
       completed:
       - !type:SpawnPrototype
         prototype: SheetSteel1
-        amount: 1
+        amount: 2
       - !type:DeleteEntity
       steps:
       - tool: Welding
@@ -206,7 +243,7 @@
       completed:
       - !type:SpawnPrototype
         prototype: SheetSteel1
-        amount: 1
+        amount: 2
       - !type:DeleteEntity
       steps:
       - tool: Welding
@@ -222,7 +259,7 @@
       completed:
       - !type:SpawnPrototype
         prototype: SheetSteel1
-        amount: 1
+        amount: 2
       - !type:DeleteEntity
       steps:
       - tool: Welding
@@ -238,7 +275,7 @@
       completed:
       - !type:SpawnPrototype
         prototype: SheetSteel1
-        amount: 1
+        amount: 2
       - !type:DeleteEntity
       steps:
       - tool: Welding
@@ -254,7 +291,7 @@
       completed:
       - !type:SpawnPrototype
         prototype: SheetSteel1
-        amount: 1
+        amount: 2
       - !type:DeleteEntity
       steps:
       - tool: Welding
@@ -270,7 +307,7 @@
       completed:
       - !type:SpawnPrototype
         prototype: SheetSteel1
-        amount: 1
+        amount: 2
       - !type:DeleteEntity
       steps:
       - tool: Welding
@@ -286,7 +323,7 @@
       completed:
       - !type:SpawnPrototype
         prototype: SheetSteel1
-        amount: 1
+        amount: 2
       - !type:DeleteEntity
       steps:
       - tool: Welding
@@ -302,7 +339,7 @@
       completed:
       - !type:SpawnPrototype
         prototype: SheetSteel1
-        amount: 1
+        amount: 2
       - !type:DeleteEntity
       steps:
       - tool: Welding
@@ -318,7 +355,7 @@
       completed:
       - !type:SpawnPrototype
         prototype: SheetSteel1
-        amount: 1
+        amount: 2
       - !type:DeleteEntity
       steps:
       - tool: Welding
@@ -334,7 +371,7 @@
       completed:
       - !type:SpawnPrototype
         prototype: SheetSteel1
-        amount: 1
+        amount: 2
       - !type:DeleteEntity
       steps:
       - tool: Welding
@@ -350,7 +387,7 @@
       completed:
       - !type:SpawnPrototype
         prototype: SheetSteel1
-        amount: 1
+        amount: 2
       - !type:DeleteEntity
       steps:
       - tool: Welding
@@ -366,7 +403,7 @@
       completed:
       - !type:SpawnPrototype
         prototype: SheetSteel1
-        amount: 2
+        amount: 3
       - !type:DeleteEntity
       steps:
       - tool: Welding
