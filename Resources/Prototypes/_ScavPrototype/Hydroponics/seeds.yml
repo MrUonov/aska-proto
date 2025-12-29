@@ -8,6 +8,8 @@
   packetPrototype: TowercapSeeds
   productPrototypes:
     - Log
+    - GeoFruit
+    - Foilage
   lifespan: 80
   maturation: 15
   ligneous: true
