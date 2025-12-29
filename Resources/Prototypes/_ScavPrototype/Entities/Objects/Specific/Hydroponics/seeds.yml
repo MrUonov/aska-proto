@@ -14,6 +14,6 @@
   id: glowTreeSeeds
   components:
     - type: Seed
-      seedId: geoTreeSeed
+      seedId: glowTreeSeed
     - type: Sprite
-      sprite: _ScavPrototype/Objects/Specific/Hydroponics/geo_tree.rsi
+      sprite: _ScavPrototype/Objects/Specific/Hydroponics/glow_tree.rsi

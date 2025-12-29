@@ -33,6 +33,8 @@
   - type: Tag
     tags:
     - GlowPlantFruit
+  - type: Produce
+    seedId: glowTreeSeeds
 
 - type: entity
   name: гео фрукт
