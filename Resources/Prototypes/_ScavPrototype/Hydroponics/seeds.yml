@@ -4,12 +4,10 @@
   name: geo tree seed
   noun: seeds-noun-spores
   displayName: geo tree
-  plantRsi: _ScavPrototype/Objects/Specific/Hydroponics/get_tree.rsi
+  plantRsi: _ScavPrototype/Objects/Specific/Hydroponics/geo_tree.rsi
   packetPrototype: TowercapSeeds
   productPrototypes:
     - Log
-  mutationPrototypes:
-    - steelcap
   lifespan: 80
   maturation: 15
   ligneous: true
