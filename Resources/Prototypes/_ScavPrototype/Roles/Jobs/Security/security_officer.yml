@@ -1,28 +1,45 @@
-- type: startingGear
-  id: ComplexScientist
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitScientist
-    back: ClothingBackpackSatchelGenetics
-    shoes: ClothingShoesColorWhite
-    outerClothing: ClothingOuterCoatLab
-    ears: ClothingHeadsetScience
-    gloves: ClothingHandsGlovesNitrile
-    pocket1: Shoker
-    belt: BoxFolderClipboardThreePapers
-    id: SciencePDA
-  storage:
-    back:
-    - InjectorGunFilled
-    - InjectorShellTranquilizer
-    - InjectorShellTranquilizer
-    - InjectorShellTranquilizer
-    - InjectorShellAntisomnin
-    - InjectorShellAntisomnin
-    - SyringeDormitive
-    - HandLabeler
+- type: job
+  id: SPComplexSecurityOfficer
+  name: job-name-SPComplexSecurityOfficer
+  description: job-description-SPComplexSecurityOfficer
+  playTimeTracker: SPJobSecurityOfficer
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 10h
+    - !type:SpeciesRequirement
+      species:
+      - Human
+  startingGear: SPComplexSecurityGear
+  icon: "JobIconSecurityOfficer"
+#  supervisors: job-supervisors-hos
+  access:
+  - Cryogenics
+  - Security
+  - Detective
+  - Armory
+  - Brig
+  - Lawyer
+  - Engineering
+  - Medical
+  - Salvage
+  - Cargo
+  - Research
+  - Service
+  - Maintenance
+  - External
+  - Janitor
+  - Theatre
+  - Bar
+  - Chemistry
+  - Kitchen
+  - Chapel
+  - Hydroponics
+  - Atmospherics
+  - GenpopEnter
+  - GenpopLeave
 
 - type: startingGear
-  id: ComplexSecurity
+  id: SPComplexSecurityGear
   equipment:
     jumpsuit: ClothingUniformJumpsuitSecGrey
     back: ClothingBackpackSatchelSecurity
@@ -53,3 +70,4 @@
     - Handcuffs
     - RadioHandheldSecurity
     - SecurityWhistle
+
