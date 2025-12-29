@@ -1,7 +1,17 @@
 - type: entity
   parent: SeedBase
   name: пакет семян гео дерева
-  id: GeoTreeSeeds
+  id: geoTreeSeeds
+  components:
+    - type: Seed
+      seedId: geoTreeSeed
+    - type: Sprite
+      sprite: _ScavPrototype/Objects/Specific/Hydroponics/geo_tree.rsi
+
+- type: entity
+  parent: SeedBase
+  name: пакет семян светящиеся дерева
+  id: glowTreeSeeds
   components:
     - type: Seed
       seedId: geoTreeSeed

@@ -5,7 +5,7 @@
   noun: семена гео дерева
   displayName: гео дерево
   plantRsi: _ScavPrototype/Objects/Specific/Hydroponics/geo_tree.rsi
-  packetPrototype: GeoTreeSeeds
+  packetPrototype: geoTreeSeeds
   productPrototypes:
     - Log
     - GeoFruit

@@ -70,4 +70,4 @@
     - Fruit
     - Vegetable
   - type: Produce
-    seedId: geoTreeSeed
+    seedId: geoTreeSeeds
