@@ -1,0 +1,9 @@
+- type: entity
+  parent: SeedBase
+  name: packet of geotree seeds
+  id: GeotreeSeeds
+  components:
+    - type: Seed
+      seedId: geotreegrow
+    - type: Sprite
+      sprite: _ScavPrototype/Objects/Specific/Hydroponics/geo_tree.rsi

@@ -29,13 +29,6 @@
     tags:
     - Ore
 
-- type: stack
-  parent: BaseMediumStack
-  id: SheetScrap
-  name: stack-scrap
-  icon: { sprite: /Textures/Objects/Materials/ore.rsi, state: silver }
-  spawn: SheetScrap1
-
 - type: entity
   parent: SheetScrap
   id: SheetScrap1
@@ -50,3 +43,4 @@
   name: materials-scrap
   icon: { sprite: Objects/Materials/Sheets/metal.rsi, state: steel }
   price: 0.05 # $5 for 1 unit
+
