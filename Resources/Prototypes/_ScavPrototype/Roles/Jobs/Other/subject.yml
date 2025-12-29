@@ -5,8 +5,6 @@
   playTimeTracker: SPJobTestSubjects
 #  icon: "JobIcon"
   requirements:
-    - !type:OverallPlaytimeRequirement
-      time: 10h
     - !type:SpeciesRequirement
       species:
       - Albino
