@@ -40,7 +40,7 @@
       types:
         Piercing: 3
         Slash: 5
-        Structural: 10
+        Structural: 7
   - type: Bloodstream
     bloodReferenceSolution:
       reagents:
@@ -62,9 +62,9 @@
         Heat: 1.5 #per second, scales with temperature & other constants
   - type: TemperatureSpeed
     thresholds:
-      273: 0.85
-      260: 0.75
-      240: 0.65
+      283: 0.85
+      270: 0.75
+      250: 0.65
   - type: Hunger
     baseDecayRate: 0.042
     starvationDamage:
@@ -74,7 +74,7 @@
   - type: PassiveDamage
     allowedStates:
     - Alive
-    damageCap: 80
+    damageCap: 100
     damage:
       types:
         Heat: -0.05
@@ -86,7 +86,7 @@
   - type: Thirst
     baseDecayRate: 0.2
   - type: ScaleVisuals
-    scale: 0.9, 0.9
+    scale: 0.875, 0.875
   - type: Tag
     tags:
     - FootstepSound

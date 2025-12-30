@@ -23,16 +23,6 @@
         Piercing: 2
         Slash: 4
         Structural: 5
-  - type: MobThresholds
-    thresholds:
-      0: Alive
-      90: Critical
-      180: Dead
-  - type: Bloodstream
-    bloodReferenceSolution:
-      reagents:
-      - ReagentId: YellowBlood
-        Quantity: 250
   - type: Damageable
     damageContainer: Biological
     damageModifierSet: Speciman
@@ -53,9 +43,6 @@
       282: 0.8
       262: 0.7
   - type: PassiveDamage
-    allowedStates:
-    - Alive
-    damageCap: 65
     damage:
       types:
         Heat: -0.04
