@@ -26,10 +26,10 @@
           - !type:MetabolizerTypeCondition
             type: [ Dune ]
           damage:
-            Burn: -1
-            Toxin: -0.5
-            Airloss: -0.5
-            Brute: -1.5
+            Burn: -0.75
+            Toxin: -0.3
+            Airloss: -0.4
+            Brute: -1
     Poison:
       effects:
       - !type:HealthChange
