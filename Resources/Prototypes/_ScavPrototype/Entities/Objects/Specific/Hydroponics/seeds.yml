@@ -10,7 +10,7 @@
 
 - type: entity
   parent: SeedBase
-  name: пакет семян светящиеся дерева
+  name: пакет семян светящегося растения
   id: glowTreeSeeds
   components:
     - type: Seed
