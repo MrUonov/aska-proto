@@ -2,7 +2,6 @@ using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 using Robust.Shared.Prototypes;
 using Content.Shared.Damage;
-using Content.Shared.Whitelist;
 
 namespace Content.Shared.ScavPrototype.Biting;
 
@@ -23,14 +22,11 @@ public sealed partial class BiterComponent : Component
     public DamageSpecifier BiteDamage = default!;
 
     [DataField, AutoNetworkedField]
-    public EntityWhitelist? Whitelist = new()
-    {
-        Components = new[]
-        {
-            "MobState",
-        }
-    };
+    public float TransferAmount = 15f;
 
     [DataField, AutoNetworkedField]
-    public float TransferAmount = 15f;
+    public float HungerAmount = 10f;
+
+    [DataField, AutoNetworkedField]
+    public float StrongBiteMultiplier = 3f;
 }
