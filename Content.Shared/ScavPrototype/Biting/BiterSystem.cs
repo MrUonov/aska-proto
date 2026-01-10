@@ -15,6 +15,7 @@ using Content.Shared.CombatMode;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Random.Helpers;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 
@@ -32,6 +33,7 @@ public sealed class BiterSystem : EntitySystem
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly SharedBodySystem _bodySystem = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
 
     public override void Initialize()
     {
@@ -62,16 +64,13 @@ public sealed class BiterSystem : EntitySystem
 
         args.Handled = true;
 
-        var IsStrong = false;
-        var timeMultiplier = 1f;
-        var IsAlive = true;
+        var type = BiteType.Normal;
 
         if (_mobStateSystem.IsAlive(args.Target, mobStateComp))
         {
             if (TryComp<CombatModeComponent>(ent.Owner, out var combatModeComp) && _combatModeSystem.IsInCombatMode(ent.Owner))
             {
-                IsStrong = true;
-                timeMultiplier = ent.Comp.StrongBiteMultiplier - 1f;
+                type = BiteType.Strong;
                 _popupSystem.PopupClient(Loc.GetString("strong-bite-action-popup-message-succes", ("target", Identity.Entity(args.Target, EntityManager))), ent.Owner, ent.Owner);
                 _popupSystem.PopupClient(Loc.GetString("strong-bite-action-popup-message-succes-other", ("user", Identity.Entity(ent.Owner, EntityManager))), args.Target, args.Target, PopupType.MediumCaution);
             }
@@ -83,12 +82,11 @@ public sealed class BiterSystem : EntitySystem
         }
         else
         {
-            IsAlive = false;
-            timeMultiplier = ent.Comp.StrongBiteMultiplier + 0.5f;
-            _popupSystem.PopupEntity(Loc.GetString("dead-bite-action-popup-message-succes", ("user", Identity.Entity(ent.Owner, EntityManager)), ("target", Identity.Entity(args.Target, EntityManager))), ent.Owner, PopupType.MediumCaution);
+            type = BiteType.Dead;
+            _popupSystem.PopupPredicted(Loc.GetString("dead-bite-action-popup-message-succes", ("user", Identity.Entity(ent.Owner, EntityManager)), ("target", Identity.Entity(args.Target, EntityManager))), ent.Owner, args.Target, PopupType.MediumCaution);
         }
 
-        _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, ent.Owner, ent.Comp.BiteTime * timeMultiplier, new BiteDoAfterEvent(IsStrong, IsAlive), ent.Owner, target: args.Target, used: ent.Owner)
+        _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, ent.Owner, ent.Comp.BiteTypes[type].BiteTime, new BiteDoAfterEvent(type), ent.Owner, target: args.Target, used: ent.Owner)
         {
             BreakOnMove = true,
         });
@@ -106,42 +104,35 @@ public sealed class BiterSystem : EntitySystem
 
         args.Handled = true;
 
-        var (bloodReagent, _) = streamComp.BloodReferenceSolution.Contents[0];
-        var damageMultiplier = 1f;
-        var bloodTransferMultiplier = 1f;
-        var hungerMultiplier = 1f;
-
-        if (args.IsAlive) {
-            if (args.IsStrong) {
-                damageMultiplier = ent.Comp.StrongBiteMultiplier;
-                bloodTransferMultiplier = ent.Comp.StrongBiteMultiplier - 0.25f;
-                hungerMultiplier = ent.Comp.StrongBiteMultiplier + 0.25f;
-                _popupSystem.PopupEntity(Loc.GetString("strong-bite-complete-popup-message", ("user", Identity.Entity(ent.Owner, EntityManager)), ("target", Identity.Entity(target, EntityManager))), ent.Owner, PopupType.MediumCaution);
-            }
-            else
-                _popupSystem.PopupEntity(Loc.GetString("bite-complete-popup-message", ("user", Identity.Entity(ent.Owner, EntityManager)), ("target", Identity.Entity(target, EntityManager))), ent.Owner);
-        }
-        else
+        switch (args.Type)
         {
-            damageMultiplier = ent.Comp.StrongBiteMultiplier * 1.75f;
-            bloodTransferMultiplier = ent.Comp.StrongBiteMultiplier * 1.5f;
-            hungerMultiplier = ent.Comp.StrongBiteMultiplier * 1.5f;
-            _popupSystem.PopupEntity(Loc.GetString("dead-bite-complete-popup-message", ("user", Identity.Entity(ent.Owner, EntityManager)), ("target", Identity.Entity(target, EntityManager))), ent.Owner, PopupType.MediumCaution);
+            case BiteType.Normal:
+                _popupSystem.PopupPredicted(Loc.GetString("bite-complete-popup-message", ("user", Identity.Entity(ent.Owner, EntityManager)), ("target", Identity.Entity(target, EntityManager))), ent.Owner, target);
+                break;
 
-            RemoveOneButcherable(target);
+            case BiteType.Strong:
+                _popupSystem.PopupPredicted(Loc.GetString("strong-bite-complete-popup-message", ("user", Identity.Entity(ent.Owner, EntityManager)), ("target", Identity.Entity(target, EntityManager))), ent.Owner, target, PopupType.MediumCaution);
+                break;
+
+            case BiteType.Dead:
+                _popupSystem.PopupPredicted(Loc.GetString("dead-bite-complete-popup-message", ("user", Identity.Entity(ent.Owner, EntityManager)), ("target", Identity.Entity(target, EntityManager))), ent.Owner, target, PopupType.MediumCaution);
+                RemoveOneButcherable(target);
+                break;
         }
 
+        var biteEntry = ent.Comp.BiteTypes[args.Type];
 
-        _damageable.TryChangeDamage(target, ent.Comp.BiteDamage * damageMultiplier, origin: ent.Owner);
+        _damageable.TryChangeDamage(target, biteEntry.Damage, origin: ent.Owner);
 
-        var bloodTransfer = ent.Comp.TransferAmount * bloodTransferMultiplier;
+        var (bloodReagent, _) = streamComp.BloodReferenceSolution.Contents[0];
+        var bloodInjection = new Solution(bloodReagent.Prototype, biteEntry.TransferAmount);
 
-        var bloodInjection = new Solution(bloodReagent.Prototype, bloodTransfer);
-
-        _bloodstreamSystem.TryModifyBloodLevel(target, -bloodTransfer);
+        _bloodstreamSystem.TryModifyBloodLevel(target, -biteEntry.TransferAmount);
         _bloodstreamSystem.TryAddToBloodstream(ent.Owner, bloodInjection);
 
-        _hungerSystem.ModifyHunger(ent.Owner, ent.Comp.HungerAmount * hungerMultiplier);
+        _hungerSystem.ModifyHunger(ent.Owner, biteEntry.HungerAmount);
+
+        _audio.PlayPredicted(biteEntry.BiteSound, ent.Owner, ent.Owner);
     }
 
     private void RemoveOneButcherable(EntityUid target)
@@ -179,19 +170,15 @@ public sealed partial class BiteActionEvent : EntityTargetActionEvent;
 public sealed partial class BiteDoAfterEvent : DoAfterEvent
 {
     [DataField]
-    public bool IsStrong;
-
-    [DataField]
-    public bool IsAlive;
+    public BiteType Type;
 
     private BiteDoAfterEvent()
     {
     }
 
-    public BiteDoAfterEvent(bool isStrong, bool isAlive)
+    public BiteDoAfterEvent(BiteType type)
     {
-        IsStrong = isStrong;
-        IsAlive = isAlive;
+        Type = type;
     }
 
     public override DoAfterEvent Clone() => this;
