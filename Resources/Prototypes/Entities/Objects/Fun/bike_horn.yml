@@ -56,7 +56,7 @@
         Blunt: 0
   - type: Tool
     qualities:
-    - Honking
+      Honking: 1
     useSound:
       collection: BikeHorn
 
@@ -135,7 +135,7 @@
     slots: [Belt]
   - type: Prayable
   - type: StaticPrice
-    price: 1000
+    price: 100 # reduced price due to heisentests
   - type: PointLight
     radius: 1.2
     energy: 2.2

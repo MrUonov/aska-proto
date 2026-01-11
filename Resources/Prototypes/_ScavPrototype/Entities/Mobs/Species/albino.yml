@@ -14,26 +14,6 @@
     - HeadSide
   - type: Body
     prototype: Albino
-  - type: Sprite
-    drawdepth: Mobs
-  - type: Vocal
-    sounds:
-      Male: MaleSpeciman
-      Unsexed: MaleSpeciman
-      Female: FemaleSpeciman
-  - type: Speech
-    speechSounds: MaleSpeciman
-    allowedEmotes: [ 'Bark', 'Growl' ]
-  - type: Butcherable
-    butcheringType: Spike
-    spawned:
-    - id: FoodYellowMeat
-      amount: 5
-  - type: DamageVisuals
-    damageOverlayGroups:
-      Brute:
-        sprite: Mobs/Effects/brute_damage.rsi
-        color: "#FFCC00"
   - type: MeleeWeapon
     soundHit:
       path: /Audio/Weapons/pierce.ogg
@@ -44,7 +24,10 @@
         Slash: 4
         Structural: 8
   - type: Bloodstream
-    bloodReagent: YellowBlood
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: YellowBlood
+        Quantity: 300
   - type: Damageable
     damageContainer: Biological
     damageModifierSet: Speciman
@@ -73,7 +56,7 @@
   - type: PassiveDamage
     allowedStates:
     - Alive
-    damageCap: 55
+    damageCap: 75
     damage:
       types:
         Heat: -0.04
@@ -83,11 +66,9 @@
         Brute: -0.07
         Toxin: -0.04
   - type: Stamina
-    critThreshold: 90
+    baseCritThreshold: 90
   - type: Thirst
     baseDecayRate: 0.2
-  - type: ScaleVisuals
-    scale: 0.9, 0.9
   - type: Tag
     tags:
     - FootstepSound

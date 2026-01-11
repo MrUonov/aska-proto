@@ -1,6 +1,6 @@
 ﻿- type: construction
   id: MetalRod
-  graph: GasPipe
+  graph: MetalRod
   startNode: start
   targetNode: MetalRod
   category: construction-category-materials

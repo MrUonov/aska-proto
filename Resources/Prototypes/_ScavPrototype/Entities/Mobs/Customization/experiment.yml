@@ -40,7 +40,7 @@
   id: GauzeRightEyeSpeciman
   bodyPart: HeadTop
   markingCategory: Overlay
-  speciesRestriction: [Speciman, Milky, Albino]
+  speciesRestriction: [Speciman, Milky, Albino, BoldMilky, Dune]
   forcedColoring: true
   sprites:
   - sprite: _ScavPrototype/Mobs/Species/Speciman/gauze.rsi
@@ -50,7 +50,7 @@
   id: GauzeLeftEyeSpeciman
   bodyPart: HeadTop
   markingCategory: Overlay
-  speciesRestriction: [Speciman, Milky, Albino]
+  speciesRestriction: [Speciman, Milky, Albino, BoldMilky, Dune]
   forcedColoring: true
   sprites:
   - sprite: _ScavPrototype/Mobs/Species/Speciman/gauze.rsi
@@ -60,7 +60,7 @@
   id: GauzeShoulderSpeciman
   bodyPart: Chest
   markingCategory: Overlay
-  speciesRestriction: [Speciman, Milky, Albino]
+  speciesRestriction: [Speciman, Milky, Albino, BoldMilky, Dune]
   forcedColoring: true
   sprites:
   - sprite: _ScavPrototype/Mobs/Species/Speciman/gauze.rsi
@@ -70,7 +70,7 @@
   id: GauzeLeftArmSpeciman
   bodyPart: LArm
   markingCategory: Overlay
-  speciesRestriction: [Speciman, Milky, Albino]
+  speciesRestriction: [Speciman, Milky, Albino, BoldMilky, Dune]
   forcedColoring: true
   sprites:
   - sprite: _ScavPrototype/Mobs/Species/Speciman/gauze.rsi
@@ -80,7 +80,7 @@
   id: GauzeRightArmSpeciman
   bodyPart: RArm
   markingCategory: Overlay
-  speciesRestriction: [Speciman, Milky, Albino]
+  speciesRestriction: [Speciman, Milky, Albino, BoldMilky, Dune]
   forcedColoring: true
   sprites:
   - sprite: _ScavPrototype/Mobs/Species/Speciman/gauze.rsi
