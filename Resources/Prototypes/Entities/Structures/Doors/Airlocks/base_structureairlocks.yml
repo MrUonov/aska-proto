@@ -191,6 +191,14 @@
     - Airlocks
     - WirePanels
     - Networking
+  #Space Prototype changes start
+  - type: PassiveDamage
+    damage:
+      types:
+        Structural: -0.02
+      groups:
+        Brute: -0.05
+  #Space Prototype changes end
   placement:
     mode: SnapgridCenter
 

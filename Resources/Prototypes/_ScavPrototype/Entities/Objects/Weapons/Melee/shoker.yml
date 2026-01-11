@@ -42,7 +42,7 @@
   - type: StaminaDamageOnHit
     damage: 100
     sound: /Audio/_ScavPrototype/Items/shoker_hit.wav
-  - type: Battery
+  - type: PredictedBattery
     maxCharge: 1000
     startingCharge: 1000
   - type: UseDelay

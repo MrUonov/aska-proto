@@ -1286,11 +1286,14 @@
   - type: Construction
     graph: Barricade
     node: woodWall
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Wood
   - type: Destructible
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 300
+        damage: 400
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
@@ -1299,7 +1302,7 @@
           collection: WoodDestroyHeavy
     - trigger:
         !type:DamageTrigger
-        damage: 150
+        damage: 250
       behaviors:
       - !type:PlaySoundBehavior
         sound:
