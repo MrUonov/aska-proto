@@ -5,9 +5,34 @@
   name: Урист МакЗубастик
   components:
   - type: Biter
-    biteDamage:
-      types:
-        Slash: 10
+    biteTypes:
+      Normal:
+        biteTime: 2
+        transferAmount: 8
+        hungerAmount: 5
+        damage:
+          types:
+            Slash: 8
+        biteSound:
+          collection: eating
+      Strong:
+        biteTime: 3.5
+        transferAmount: 20
+        hungerAmount: 15
+        damage:
+          types:
+            Slash: 25
+        biteSound:
+          collection: eating
+      Dead:
+        biteTime: 6
+        transferAmount: 40
+        hungerAmount: 30
+        damage:
+          types:
+            Slash: 50
+        biteSound:
+          path: /Audio/Effects/demon_consume.ogg
   - type: Icon
     sprite: _ScavPrototype/Mobs/Species/Dune/parts.rsi
     state: full
