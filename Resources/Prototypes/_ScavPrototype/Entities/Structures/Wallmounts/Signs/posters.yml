@@ -1,0 +1,9 @@
+- type: entity
+  parent: PosterBase
+  id: PosterLevAndTK7
+  name: "Лев и Седьмой"
+  description: "Рисунок изображающий Льва и Седьмого стоящих в обнимку"
+  components:
+  - type: Sprite
+    sprite: _ScavPrototype/Structures/Wallmounts/posters.rsi
+    state: dad_and_son
