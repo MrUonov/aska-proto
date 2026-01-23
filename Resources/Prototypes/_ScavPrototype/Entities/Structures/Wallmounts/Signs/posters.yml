@@ -7,3 +7,13 @@
   - type: Sprite
     sprite: _ScavPrototype/Structures/Wallmounts/posters.rsi
     state: dad_and_son
+
+- type: entity
+  parent: PosterBase
+  id: PosterCow
+  name: "Корова"
+  description: "Изображение худой коровы на зелёном фоне"
+  components:
+  - type: Sprite
+    sprite: _ScavPrototype/Structures/Wallmounts/posters.rsi
+    state: cow
