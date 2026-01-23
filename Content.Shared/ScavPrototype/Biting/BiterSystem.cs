@@ -15,6 +15,7 @@ using Content.Shared.CombatMode;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Random.Helpers;
+using Content.Shared.Gibbing;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
@@ -32,8 +33,8 @@ public sealed class BiterSystem : EntitySystem
     [Dependency] private readonly HungerSystem _hungerSystem = default!;
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly SharedBodySystem _bodySystem = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly GibbingSystem _gib = default!;
 
     public override void Initialize()
     {
@@ -158,7 +159,7 @@ public sealed class BiterSystem : EntitySystem
         Dirty(target, butcherable);
 
         if (butcherable.SpawnedEntities.Count == 0)
-            _bodySystem.GibBody(target, true);
+            _gib.Gib(target, true);
     }
 
 }

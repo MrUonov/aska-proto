@@ -33,7 +33,7 @@
         sprite: Mobs/Effects/brute_damage.rsi
         color: "#FFCC00"
   - type: MeleeWeapon
-    attackRate: 2
+    attackRate: 1.75
     soundHit:
       path: /Audio/Weapons/pierce.ogg
     animation: WeaponArcClaw
