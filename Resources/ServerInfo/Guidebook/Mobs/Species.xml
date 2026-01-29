@@ -5,15 +5,13 @@
 
   <Box>
   <GuideEntityEmbed Entity="MobAlbino" Caption="Альбино"/>
-  <GuideEntityEmbed Entity="MobBoldMilky" Caption="Лысый милки"/>
+  <GuideEntityEmbed Entity="MobMilky" Caption="Милки"/>
   <GuideEntityEmbed Entity="MobDune" Caption="Дюна"/>
   <GuideEntityEmbed Entity="MobSpeciman" Caption="Эксперимент"/>
   </Box>
   <Box>
-  <GuideEntityEmbed Entity="MobMilky" Caption="Милки"/>
   <GuideEntityEmbed Entity="MobOrange" Caption="Орандж"/>
   <GuideEntityEmbed Entity="MobHuman" Caption="Человек"/>
-  <GuideEntityEmbed Entity="MobDwarf" Caption="Человек карлик"/>
   </Box>
 
 </Document>

@@ -4,23 +4,16 @@
   text: "/ServerInfo/Guidebook/Mobs/Species.xml"
   children:
   - Albino
-  - BoldMilky
   - Dune
   - Speciman
   - Milky
   - Orange
   - Human
-  - Dwarf
 
 - type: guideEntry
   id: Albino
   name: Альбино
   text: "/ServerInfo/_ScavPrototype/Guidebook/Mobs/Albino.xml"
-
-- type: guideEntry
-  id: BoldMilky
-  name: Лысый милки
-  text: "/ServerInfo/_ScavPrototype/Guidebook/Mobs/BoldMilky.xml"
 
 - type: guideEntry
   id: Dune
@@ -46,8 +39,3 @@
   id: Human
   name: Человек
   text: "/ServerInfo/Guidebook/Mobs/Human.xml"
-
-- type: guideEntry
-  id: Dwarf
-  name: Человек карлик
-  text: "/ServerInfo/Guidebook/Mobs/Dwarf.xml"
