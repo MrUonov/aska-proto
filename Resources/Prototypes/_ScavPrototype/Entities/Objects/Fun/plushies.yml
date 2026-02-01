@@ -42,22 +42,22 @@
   - type: Item
     sprite: _ScavPrototype/Objects/Fun/albino_plushie.rsi
   - type: EmitSoundOnUse
-    sound: &PlushieExperimentSound
+    sound: &PlushieSound
       path: /Audio/Items/Toys/arf.ogg
       params:
         volume: -5
   - type: EmitSoundOnLand
-    sound: *PlushieExperimentSound
+    sound: *PlushieSound
   - type: EmitSoundOnActivate
-    sound: *PlushieExperimentSound
+    sound: *PlushieSound
   - type: EmitSoundOnTrigger
-    sound: *PlushieExperimentSound
+    sound: *PlushieSound
   - type: EmitSoundOnCollide
-    sound: *PlushieExperimentSound
+    sound: *PlushieSound
   - type: Edible
-    useSound: *PlushieExperimentSound
+    useSound: *PlushieSound
   - type: MeleeWeapon
-    soundHit: *PlushieExperimentSound
+    soundHit: *PlushieSound
   - type: Clothing
     sprite: _ScavPrototype/Objects/Fun/albino_plushie.rsi
     slots:
