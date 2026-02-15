@@ -26,3 +26,35 @@
   - type: Tag
     tags:
     - Rope
+
+- type: entity
+  name: лист
+  parent: BaseItem
+  description: Крепкий лист из листвы.
+  id: FoilageCanvas
+  components:
+  - type: Sprite
+    sprite: _ScavPrototype/Objects/Items/canvas.rsi
+    state: icon
+  - type: Construction
+    graph: SpecimanObjects
+    node: canvas
+  - type: Tag
+    tags:
+    - Canvas
+
+- type: entity
+  name: нитки
+  parent: BaseItem
+  description: Нитки из верёвок.
+  id: FoilageString
+  components:
+  - type: Sprite
+    sprite: _ScavPrototype/Objects/Items/thread.rsi
+    state: icon
+  - type: Construction
+    graph: SpecimanObjects
+    node: string
+  - type: Tag
+    tags:
+    - String

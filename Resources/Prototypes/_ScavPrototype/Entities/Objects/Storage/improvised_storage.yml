@@ -17,3 +17,21 @@
   - type: Construction
     graph: ImprovisedStorage
     node: pouch
+  - type: Tag
+    tags:
+    - Pouch
+
+- type: entity
+  name: рюкзак из листвы
+  parent: ClothingBackpack
+  id: FoilageBag
+  description: Рюкзак сделаная своими лапками из листвы.
+  components:
+  - type: Storage
+    grid:
+    - 0,0,3,3
+  - type: Sprite
+    sprite: _ScavPrototype/Objects/Items/barset.rsi
+  - type: Construction
+    graph: ImprovisedStorage
+    node: imbag

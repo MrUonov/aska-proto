@@ -12,18 +12,47 @@
                 sprite: _ScavPrototype/Objects/Items/foilage_rope.rsi
                 state: icon
               doAfter: 5
-            - tag: Foilage
+            - tag: Canvas
               name: construction-graph-tag-foilage
               icon:
-                sprite: _ScavPrototype/Objects/Items/foilage.rsi
+                sprite: _ScavPrototype/Objects/Items/canvas.rsi
                 state: icon
               doAfter: 5
-            - tag: Foilage
+            - tag: Canvas
               name: construction-graph-tag-foilage
               icon:
-                sprite: _ScavPrototype/Objects/Items/foilage.rsi
+                sprite: _ScavPrototype/Objects/Items/canvas.rsi
+                state: icon
+              doAfter: 5
+        - to: imbag
+          steps:
+            - tag: Rope
+              name: лиственная верёвка
+              icon:
+                sprite: _ScavPrototype/Objects/Items/foilage_rope.rsi
+                state: icon
+              doAfter: 5
+            - tag: Rope
+              name: лиственная верёвка
+              icon:
+                sprite: _ScavPrototype/Objects/Items/foilage_rope.rsi
+                state: icon
+              doAfter: 5
+            - tag: Pouch
+              name: сумка из листвы
+              icon:
+                sprite: _ScavPrototype/Objects/Items/foilage_pouch.rsi
+                state: icon
+              doAfter: 5
+            - tag: String
+              name: нитки
+              icon:
+                sprite: _ScavPrototype/Objects/Items/thread.rsi
                 state: icon
               doAfter: 5
 
     - node: pouch
       entity: FoilagePouch
+
+    - node: imbag
+      entity: FoilageBag
