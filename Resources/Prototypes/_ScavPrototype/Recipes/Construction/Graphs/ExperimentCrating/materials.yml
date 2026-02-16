@@ -69,6 +69,9 @@
     entity: IncompleteThread
     edges:
       - to: string
+        completed:
+          - !type:SetStackCount
+            amount: 3
         steps:
           - tool: Slicing
             doAfter: 5

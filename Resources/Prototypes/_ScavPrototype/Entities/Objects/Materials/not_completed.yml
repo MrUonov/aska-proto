@@ -70,6 +70,7 @@
     butcheringType: Knife
     spawned:
     - id: FoilageString
+    amount: 3
   - type: Tag
     tags:
     - UnfinishedString

@@ -10,6 +10,8 @@
   - type: Tag
     tags:
     - Foilage
+  - type: Item
+    size: Tiny
 
 - type: entity
   name: верёвка
@@ -58,3 +60,8 @@
   - type: Tag
     tags:
     - String
+  - type: Item
+    size: Tiny
+  - type: Stack
+    stackType: FoilageStringStack
+    count: 3
