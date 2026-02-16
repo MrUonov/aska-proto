@@ -13,13 +13,13 @@
                 state: icon
               doAfter: 5
             - tag: Canvas
-              name: construction-graph-tag-foilage
+              name: лист
               icon:
                 sprite: _ScavPrototype/Objects/Items/canvas.rsi
                 state: icon
               doAfter: 5
             - tag: Canvas
-              name: construction-graph-tag-foilage
+              name: лист
               icon:
                 sprite: _ScavPrototype/Objects/Items/canvas.rsi
                 state: icon
