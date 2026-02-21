@@ -178,8 +178,8 @@
   description: Откусите от кого-то кусочек.
   components:
   - type: Action
-    icon: { sprite : Interface/Actions/devour.rsi, state: icon }
-    iconOn: { sprite : Interface/Actions/devour.rsi, state: icon-on }
+    icon: { sprite : _ScavPrototype/Mobs/Species/Dune/bite_action.rsi, state: icon }
+    iconOn: { sprite : _ScavPrototype/Mobs/Species/Dune/bite_action.rsi, state: icon-on }
     itemIconStyle: BigAction
     priority: 1
     useDelay: 5
