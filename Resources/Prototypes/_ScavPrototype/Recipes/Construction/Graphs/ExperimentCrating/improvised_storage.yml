@@ -44,12 +44,8 @@
                 sprite: _ScavPrototype/Objects/Items/foilage_pouch.rsi
                 state: icon
               doAfter: 5
-            - tag: String
-              name: нитки
-              icon:
-                sprite: _ScavPrototype/Objects/Items/thread.rsi
-                state: icon
-              doAfter: 5
+            - material: String
+              amount: 2
 
     - node: pouch
       entity: FoilagePouch

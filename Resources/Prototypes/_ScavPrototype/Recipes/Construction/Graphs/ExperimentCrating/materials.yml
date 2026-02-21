@@ -69,9 +69,6 @@
     entity: IncompleteThread
     edges:
       - to: string
-        completed:
-          - !type:SetStackCount
-            amount: 3
         steps:
           - tool: Slicing
             doAfter: 5
@@ -87,4 +84,4 @@
     entity: FoilageCanvas
 
   - node: string
-    entity: FoilageString
+    entity: FoilageString3

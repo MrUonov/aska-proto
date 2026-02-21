@@ -1,5 +1,5 @@
 - type: stack
-  id: FoilageStringStack
+  id: String
   parent: BaseVerySmallStack
   name: нить
   icon: { sprite: /Textures/Objects/Materials/ore.rsi, state: silver }
