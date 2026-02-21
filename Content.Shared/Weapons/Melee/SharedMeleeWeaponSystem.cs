@@ -387,10 +387,6 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
                 if (!Blocker.CanAttack(user, target, (weaponUid, weapon)))
                     return false;
 
-                // Can't self-attack if you're the weapon
-                if (weaponUid == target)
-                    return false;
-
                 break;
             case DisarmAttackEvent disarm:
                 if (disarm.Target != null && !TryGetEntity(disarm.Target, out target))
@@ -547,6 +543,11 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         var attackedEvent = new AttackedEvent(meleeUid, user, targetXform.Coordinates);
         RaiseLocalEvent(target.Value, attackedEvent);
 
+        if (user == target.Value) //Space Prototype change
+        {
+            damage *= 0.8;
+        }
+
         var modifiedDamage = DamageSpecifier.ApplyModifierSets(damage + hitEvent.BonusDamage + attackedEvent.BonusDamage, hitEvent.ModifiersList);
 
         if (Damageable.TryChangeDamage(target.Value, modifiedDamage, out var damageResult, origin:user, ignoreResistances:resistanceBypass))
@@ -557,7 +558,15 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
                 _stamina.TakeStaminaDamage(target.Value, (bluntDamage * component.BluntStaminaDamageFactor).Float(), visual: false, source: user, with: meleeUid == user ? null : meleeUid);
             }
 
-            if (meleeUid == user)
+            if (user == target.Value) //Space Prototype changes start
+            {
+                PopupSystem.PopupEntity(Loc.GetString("selfharm-popup-message-others", ("performer", Identity.Entity(user, EntityManager))), user, Filter.PvsExcept(user), true, PopupType.MediumCaution);
+
+                AdminLogger.Add(LogType.MeleeHit,
+                    LogImpact.Medium,
+                    $"{ToPrettyString(user):actor} act SELFHARM and dealt {damageResult.GetTotal():damage} damage");
+            }
+            else if (meleeUid == user) //Space Prototype changes end
             {
                 AdminLogger.Add(LogType.MeleeHit,
                     LogImpact.Medium,
