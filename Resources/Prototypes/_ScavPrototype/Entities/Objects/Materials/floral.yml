@@ -10,6 +10,8 @@
   - type: Tag
     tags:
     - Foilage
+  - type: Item
+    size: Tiny
 
 - type: entity
   name: верёвка
@@ -26,3 +28,58 @@
   - type: Tag
     tags:
     - Rope
+
+- type: entity
+  name: лист
+  parent: BaseItem
+  description: Крепкий лист из листвы.
+  id: FoilageCanvas
+  components:
+  - type: Sprite
+    sprite: _ScavPrototype/Objects/Items/canvas.rsi
+    state: icon
+  - type: Construction
+    graph: SpecimanObjects
+    node: canvas
+  - type: Tag
+    tags:
+    - Canvas
+
+- type: entity
+  name: нитки
+  parent: BaseItem
+  description: Нитки из верёвок.
+  id: FoilageString
+  components:
+  - type: Sprite
+    sprite: _ScavPrototype/Objects/Items/thread.rsi
+    state: icon
+  - type: Tag
+    tags:
+    - String
+  - type: Item
+    size: Tiny
+  - type: Stack
+    stackType: String
+    count: 1
+
+- type: entity
+  abstract: false
+  name: нитки
+  parent: FoilageString
+  description: Нитки из верёвок.
+  id: FoilageString3
+  components:
+  - type: Stack
+    stackType: String
+    count: 3
+  - type: Construction
+    graph: SpecimanObjects
+    node: string
+
+- type: material
+  id: String
+  stackEntity: FoilageString
+  name: нитки
+  icon: { sprite: _ScavPrototype/Objects/Items/thread.rsi, state: icon }
+  price: 0.15 # $15 for 1 unit

@@ -74,3 +74,47 @@
     tags:
     - SpecimanCraft
   objectType: Item
+
+- type: construction
+  id: FoilageBagCraft
+  graph: ImprovisedStorage
+  startNode: start
+  targetNode: imbag
+  category: construction-category-speciman
+  entityWhitelist:
+    tags:
+    - SpecimanCraft
+  objectType: Item
+
+- type: construction
+  id: FoilageCanvasCraft
+  graph: SpecimanObjects
+  startNode: start
+  targetNode: canvas
+  category: construction-category-speciman
+  entityWhitelist:
+    tags:
+    - SpecimanCraft
+  objectType: Item
+
+- type: construction
+  id: FoilageStringCraft
+  graph: SpecimanObjects
+  startNode: start
+  targetNode: string
+  category: construction-category-speciman
+  entityWhitelist:
+    tags:
+    - SpecimanCraft
+  objectType: Item
+
+#- type: construction
+#  id: UnfinishedStringCraft
+#  graph: SpecimanObjects
+#  startNode: start
+#  targetNode: unfinishedstring
+#  category: construction-category-speciman
+#  entityWhitelist:
+#    tags:
+#    - SpecimanCraft
+#  objectType: Item

@@ -21,3 +21,15 @@
 
 - type: Tag
   id: Barbell
+
+- type: Tag
+  id: Canvas
+
+- type: Tag
+  id: String
+
+- type: Tag
+  id: Pouch
+
+- type: Tag
+  id: UnfinishedString
