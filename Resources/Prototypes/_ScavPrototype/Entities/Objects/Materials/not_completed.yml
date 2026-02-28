@@ -53,3 +53,24 @@
     butcheringType: Knife
     spawned:
     - id: ImprovisedKnife
+
+- type: entity
+  parent: BaseItem
+  name: незавершенные нитки
+  description: Их нужно нарезать чем-то
+  id: IncompleteThread
+  components:
+  - type: Sprite
+    sprite: _ScavPrototype/Objects/Items/foilage_rope.rsi
+    state: icon-unfinished
+  - type: Construction
+    graph: SpecimanObjects
+    node: unfinishedstring
+  - type: Butcherable
+    butcheringType: Knife
+    spawned:
+    - id: FoilageString
+    amount: 3
+  - type: Tag
+    tags:
+    - UnfinishedString
