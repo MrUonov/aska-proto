@@ -73,8 +73,8 @@
       required: false
     Chest:
       points: 1
-      required: false
-      defaultMarkings: [ OrangeLowArmsBase ]
+      required: true
+      defaultMarkings: [ OrangeLowArmsBase ] # НЕ ЗАБЫТЬ РАЗЩИТКОДИТЬ РУККИ ОРАНДЖА
     Legs:
       points: 2
       required: false
