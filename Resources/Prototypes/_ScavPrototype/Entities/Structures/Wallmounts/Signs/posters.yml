@@ -2,7 +2,7 @@
   parent: PosterBase
   id: PosterLevAndTK7
   name: "Лев и Седьмой"
-  description: "Рисунок изображающий Льва и Седьмого стоящих в обнимку"
+  description: "Рисунок изображающий Льва и Седьмого стоящих в обнимку."
   components:
   - type: Sprite
     sprite: _ScavPrototype/Structures/Wallmounts/posters.rsi
@@ -12,8 +12,18 @@
   parent: PosterBase
   id: PosterCow
   name: "Корова"
-  description: "Изображение худой коровы на зелёном фоне"
+  description: "Изображение худой коровы на зелёном фоне."
   components:
   - type: Sprite
     sprite: _ScavPrototype/Structures/Wallmounts/posters.rsi
     state: cow
+
+- type: entity
+  parent: PosterBase
+  id: PosterLawServes
+  name: "Закон служит, закон правит"
+  description: "Картина о столкновении системы и личности."
+  components:
+  - type: Sprite
+    sprite: _ScavPrototype/Structures/Wallmounts/posters.rsi
+    state: law

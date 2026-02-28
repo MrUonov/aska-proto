@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC0-1.0",
-    "copyright": "Made by _koteg(on Discord)",
+    "copyright": "Made by koteg_(on Discord)",
     "size": {
         "x": 32,
         "y": 32
@@ -12,6 +12,9 @@
         },
         {
             "name": "cow"
+        },
+        {
+            "name": "law"
         }
     ]
 }
