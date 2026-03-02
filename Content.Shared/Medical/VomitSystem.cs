@@ -15,6 +15,7 @@ using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
+using Content.Shared.Actions; //invalide Scav prototype
 
 namespace Content.Shared.Medical;
 
@@ -39,6 +40,7 @@ public sealed class VomitSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<BodyComponent, TryVomitEvent>(TryBodyVomitSolution);
+        SubscribeLocalEvent<BodyComponent, VomitActionEvent>(OnVomitAction); //invalide Scav prototype
     }
 
     private const float ChemMultiplier = 0.1f;
@@ -136,8 +138,21 @@ public sealed class VomitSystem : EntitySystem
         // Force sound to play as spill doesn't work if solution is empty.
         _audio.PlayPvs(_vomitSound, uid);
         _popup.PopupEntity(Loc.GetString("disease-vomit", ("person", Identity.Entity(uid, EntityManager))), uid);
+    } 
+
+    //invalide Scav prototype
+    public void OnVomitAction(Entity<BodyComponent> ent, ref VomitActionEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        Vomit(ent.Owner);
+        args.Handled = true;
     }
 }
 
 [ByRefEvent]
 public record struct TryVomitEvent(Solution Sol, bool Forced = false, bool Handled = false);
+
+//invalide Scav prototype
+public sealed partial class VomitActionEvent : InstantActionEvent;

@@ -11,6 +11,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using Content.Shared.Bed.Sleep; //invalid Scav Prototype
 
 namespace Content.Shared.Nutrition.EntitySystems;
 
@@ -126,6 +127,8 @@ public sealed class HungerSystem : EntitySystem
 
     private void UpdateCurrentThreshold(EntityUid uid, HungerComponent? component = null)
     {
+        if(TryComp<SleepingComponent>(uid, out var _) ) //invalid Scav Prototype
+            return;
         if (!Resolve(uid, ref component))
             return;
 

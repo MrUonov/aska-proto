@@ -107,6 +107,9 @@
     baseDecayRate: 0.17
   - type: ScaleVisuals
     scale: 0.75, 0.75
+  - type: ActionGrant
+    actions: 
+    - MilkyVomitAction
   - type: Tag
     tags:
     - CanPilot
@@ -168,3 +171,17 @@
   components:
   - type: HumanoidAppearance
     species: Milky
+
+- type: entity
+  parent: BaseAction
+  id: MilkyVomitAction
+  name: "[color=yellow]Блювануть[/color]"
+  description: Все ваши эмоциональные переживания обретают физическую форму. Какая мерзость.
+  components:
+  - type: Action
+    useDelay: 25
+    icon:
+      sprite: _ScavPrototype/Mobs/Species/Milky/vomit_action.rsi
+      state: icon
+  - type: InstantAction
+    event: !type:VomitActionEvent
