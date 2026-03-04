@@ -566,7 +566,26 @@ public sealed partial class ChatSystem : SharedChatSystem
             !TryEmoteChatInput(source, action))
             return;
 
-        SendInVoiceRange(ChatChannel.Emotes, action, wrappedMessage, source, range, author);
+        //Space Prototype chages start
+        //SendInVoiceRange(ChatChannel.Emotes, action, wrappedMessage, source, range, author);
+        foreach (var (session, data) in GetRecipients(source, VoiceRange))
+        {
+            var entRange = MessageRangeCheck(session, data, range);
+            if (entRange == MessageRangeCheckResult.Disallowed)
+                continue;
+
+            if (session.AttachedEntity is not { Valid: true } playerEntity)
+                continue;
+
+            var entHideChat = entRange == MessageRangeCheckResult.HideChat;
+
+            if (_examineSystem.InRangeUnOccluded(source, session.AttachedEntity.Value, VoiceRange) || data.Observer)
+             _chatManager.ChatMessageToOne(ChatChannel.Emotes, action, wrappedMessage, source, entHideChat, session.Channel, author: author);
+        }
+
+        _replay.RecordServerMessage(new ChatMessage(ChatChannel.Emotes, action, wrappedMessage, GetNetEntity(source), null, MessageRangeHideChatForReplay(range)));
+        //Space Prototype chages end
+
         if (!hideLog)
             if (name != Name(source))
                 _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Emote from {source} as {name}: {action}");
