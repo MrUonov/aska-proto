@@ -1,9 +1,11 @@
 - type: entity
-  parent: BaseWall
   id: WallLaboratoty
+  parent: BaseWall
   name: laboratory wall
   description: Keeps specimens inside and scientists outside
   components:
+  - type: Transform
+    noRot: true
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicStrong
@@ -27,30 +29,29 @@
           collection: MetalSlam
       - !type:DoActsBehavior
         acts: ["Destruction"]
-  - type: StaticPrice
-    price: 250
   - type: RadiationBlocker
     resistance: 5
+  - type: SmoothEdge
   - type: Sprite
-    sprite: Structures/Walls/shuttle.rsi
+    # noRot: true
+    sprite: _ScavPrototype/Structures/Walls/labaratory.rsi
+    layers:
+    - state: dirt
+    - map: [ "enum.EdgeLayer.South" ]
+      state: dirt_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: dirt_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: dirt_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: dirt_west
   - type: Icon
-    sprite: Structures/Walls/shuttle.rsi
-    state: full
+    sprite: _ScavPrototype/Structures/Walls/labaratory.rsi
+    state: dirt
   - type: IconSmooth
     key: walls
-    base: state
+    mode: NoSprite
   - type: Appearance
-  - type: GenericVisualizer
-    visuals:
-      enum.ShuttleWallVisuals.DeconstructionStage:
-        ShuttleWallVisualLayers.Deconstruction:
-          -1: { visible: false }
-          0: { state: shuttle_construct-0, visible: true}
-          1: { state: shuttle_construct-1, visible: true}
-          2: { state: shuttle_construct-2, visible: true}
-          3: { state: shuttle_construct-3, visible: true}
-          4: { state: shuttle_construct-4, visible: true}
-          5: { state: shuttle_construct-5, visible: true}
   - type: Fixtures
     fixtures:
       fix1:

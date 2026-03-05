@@ -105,10 +105,10 @@
         Cold: 0.05
   - type: Thirst
     baseDecayRate: 0.17
-  - type: ScaleVisuals
-    scale: 0.75, 0.75
+  # - type: ScaleVisuals
+  #   scale: 0.75, 0.75
   - type: ActionGrant
-    actions: 
+    actions:
     - MilkyVomitAction
   - type: Tag
     tags:
