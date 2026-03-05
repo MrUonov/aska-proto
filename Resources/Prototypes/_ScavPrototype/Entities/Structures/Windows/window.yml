@@ -2,6 +2,7 @@
   parent: Window
   id: WindowLaboratoty
   name: laboratoty window
+  suffix: Space Prototype
   components:
   - type: Transform
     noRot: true
@@ -30,6 +31,7 @@
   parent: ReinforcedWindow
   id: WindowReinforcedLaboratoty
   name: laboratoty reinforced window
+  suffix: Space Prototype
   components:
   - type: Transform
     noRot: true

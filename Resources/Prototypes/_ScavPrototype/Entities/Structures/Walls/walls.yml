@@ -3,6 +3,7 @@
   parent: BaseWall
   name: laboratory wall
   description: Keeps specimens inside and scientists outside
+  suffix: Space Prototype
   components:
   - type: Transform
     noRot: true
@@ -22,7 +23,7 @@
           collection: MetalSlam
     - trigger:
         !type:DamageTrigger
-        damage: 400
+        damage: 300
       behaviors:
       - !type:PlaySoundBehavior
         sound:
@@ -63,3 +64,67 @@
         layer:
         - WallLayer
         density: 2000
+
+- type: entity
+  id: WallLaboratotyAlt
+  parent: WallLaboratoty
+  name: laboratory soft wall
+  suffix: Space Prototype
+  components:
+  - type: Sprite
+    sprite: _ScavPrototype/Structures/Walls/labaratory_alt.rsi
+    layers:
+    - state: dirt
+    - map: [ "enum.EdgeLayer.South" ]
+      state: dirt_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: dirt_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: dirt_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: dirt_west
+  - type: Icon
+    sprite: _ScavPrototype/Structures/Walls/labaratory_alt.rsi
+    state: dirt
+
+- type: entity
+  id: WallHeatReinforced
+  parent: WallLaboratoty
+  name: heat reinforced wall
+  suffix: Space Prototype
+  components:
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 800
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+    - trigger:
+        !type:DamageTrigger
+        damage: 700
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Sprite
+    sprite: _ScavPrototype/Structures/Walls/heat_reinforced.rsi
+    layers:
+    - state: dirt
+    - map: [ "enum.EdgeLayer.South" ]
+      state: dirt_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: dirt_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: dirt_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: dirt_west
+  - type: Icon
+    sprite: _ScavPrototype/Structures/Walls/heat_reinforced.rsi
+    state: dirt

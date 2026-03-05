@@ -1,7 +1,7 @@
 - type: entity
   parent: Airlock
   id: AirlockLaboratoty
-  suffix: Laboratoty
+  suffix: Space Prototype
   components:
   - type: Door
     crushDamage:
@@ -21,7 +21,7 @@
 - type: entity
   parent: AirlockGlass
   id: AirlockLaboratotyGlass
-  suffix: Laboratoty, Glass
+  suffix: Space Prototype, Glass
   components:
   - type: Door
     crushDamage:
