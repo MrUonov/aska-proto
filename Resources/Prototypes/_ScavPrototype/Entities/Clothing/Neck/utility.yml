@@ -5,7 +5,7 @@
   description: Бьет током при активации. Идеально подходит для наказания и контроля буйных экпериментов.
   components:
   - type: Sprite
-    sprite: _ScavPrototype/Clothing/electrocollar.rsi
+    sprite: _ScavPrototype/Clothing/Neck/utility/electrocollar.rsi
     state: icon
   - type: Construction
     graph: Electrocollar
@@ -18,7 +18,7 @@
   description: Бьет током при активации. Идеально подходит для наказания и контроля буйных экпериментов.
   components:
   - type: Sprite
-    sprite: _ScavPrototype/Clothing/electrocollar.rsi
+    sprite: _ScavPrototype/Clothing/Neck/utility/electrocollar.rsi
     layers:
     - state: icon
     - state: locked
