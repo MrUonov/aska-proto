@@ -62,6 +62,8 @@
   id: BaseWall
   components:
   - type: Occluder # Breaks on diagonal walls
+  - type: Isolation # Space Prototype change
+    isolation: 0.6
 
 - type: entity
   abstract: true
