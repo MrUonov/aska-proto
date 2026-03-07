@@ -33,6 +33,8 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Replays;
 using Robust.Shared.Utility;
+//Space Prototype chages
+using Content.Shared.ScavPrototype.Chat;
 
 namespace Content.Server.Chat.Systems;
 
@@ -58,6 +60,8 @@ public sealed partial class ChatSystem : SharedChatSystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly ReplacementAccentSystem _wordreplacement = default!;
     [Dependency] private readonly ExamineSystemShared _examineSystem = default!;
+    //Space Prototype chages
+    [Dependency] private readonly IsolationSystem _isolationSystem = default!;
 
     // Corvax-TTS-Start: Moved from Server to Shared
     // public const int VoiceRange = 10; // how far voice goes in world units
@@ -66,6 +70,8 @@ public sealed partial class ChatSystem : SharedChatSystem
     // Corvax-TTS-End
     public readonly SoundSpecifier DefaultAnnouncementSound = new SoundPathSpecifier("/Audio/Corvax/Announcements/announce.ogg"); // Corvax-Announcements
     public const string CentComAnnouncementSound = "/Audio/Corvax/Announcements/centcomm.ogg"; // Corvax-Announcements
+
+    public const float MaxIsolation = 5f; //Space Prototype change
 
     private bool _loocEnabled = true;
     private bool _deadLoocEnabled;
@@ -421,7 +427,46 @@ public sealed partial class ChatSystem : SharedChatSystem
             ("fontSize", speech.FontSize),
             ("message", FormattedMessage.EscapeText(message)));
 
-        SendInVoiceRange(ChatChannel.Local, message, wrappedMessage, source, range);
+        //SendInVoiceRange(ChatChannel.Local, message, wrappedMessage, source, range);
+        //Space Prototype changes start
+        var obfuscatedMessage = ObfuscateMessageReadability(message, 0.2f);
+
+        var wrappedObfuscatedMessage = Loc.GetString("chat-manager-entity-say-wrap-message",
+            ("entityName", name),
+            ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))),
+            ("fontType", speech.FontId),
+            ("fontSize", speech.FontSize),
+            ("message", FormattedMessage.EscapeText(obfuscatedMessage)));
+
+        var wrappedUnknownMessage = Loc.GetString("chat-manager-entity-say-unknown-wrap-message",
+            ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))),
+            ("fontType", speech.FontId),
+            ("fontSize", speech.FontSize),
+            ("message", FormattedMessage.EscapeText(obfuscatedMessage)));
+
+
+        foreach (var (session, data) in GetRecipients(source, VoiceRange))
+        {
+            var entRange = MessageRangeCheck(session, data, range);
+            if (entRange == MessageRangeCheckResult.Disallowed)
+                continue;
+
+            if (session.AttachedEntity is not { Valid: true } playerEntity)
+                continue;
+
+            var caculatedIsolation = MaxIsolation - _isolationSystem.CalculateIsolationLevel(source, session.AttachedEntity.Value);
+
+            var entHideChat = entRange == MessageRangeCheckResult.HideChat;
+            if (caculatedIsolation >= 4 || data.Observer)
+                _chatManager.ChatMessageToOne(ChatChannel.Local, message, wrappedMessage, source, entHideChat, session.Channel);
+            else if (caculatedIsolation >= 1.5)
+                _chatManager.ChatMessageToOne(ChatChannel.Local, obfuscatedMessage, wrappedObfuscatedMessage, source, entHideChat, session.Channel);
+            else if (caculatedIsolation > 0)
+                _chatManager.ChatMessageToOne(ChatChannel.Local, obfuscatedMessage, wrappedUnknownMessage, source, entHideChat, session.Channel);
+        }
+
+        _replay.RecordServerMessage(new ChatMessage(ChatChannel.Local, message, wrappedMessage, GetNetEntity(source), null, MessageRangeHideChatForReplay(range)));
+        //Space Prototype changes end
 
         var ev = new EntitySpokeEvent(source, message, originalMessage, null, null);
         RaiseLocalEvent(source, ev, true);
@@ -566,7 +611,26 @@ public sealed partial class ChatSystem : SharedChatSystem
             !TryEmoteChatInput(source, action))
             return;
 
-        SendInVoiceRange(ChatChannel.Emotes, action, wrappedMessage, source, range, author);
+        //Space Prototype chages start
+        //SendInVoiceRange(ChatChannel.Emotes, action, wrappedMessage, source, range, author);
+        foreach (var (session, data) in GetRecipients(source, VoiceRange))
+        {
+            var entRange = MessageRangeCheck(session, data, range);
+            if (entRange == MessageRangeCheckResult.Disallowed)
+                continue;
+
+            if (session.AttachedEntity is not { Valid: true } playerEntity)
+                continue;
+
+            var entHideChat = entRange == MessageRangeCheckResult.HideChat;
+
+            if (_examineSystem.InRangeUnOccluded(source, session.AttachedEntity.Value, VoiceRange) || data.Observer)
+             _chatManager.ChatMessageToOne(ChatChannel.Emotes, action, wrappedMessage, source, entHideChat, session.Channel, author: author);
+        }
+
+        _replay.RecordServerMessage(new ChatMessage(ChatChannel.Emotes, action, wrappedMessage, GetNetEntity(source), null, MessageRangeHideChatForReplay(range)));
+        //Space Prototype chages end
+
         if (!hideLog)
             if (name != Name(source))
                 _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Emote from {source} as {name}: {action}");
