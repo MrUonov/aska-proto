@@ -64,6 +64,8 @@
         layer:
         - WallLayer
         density: 2000
+  - type: Isolation
+    isolation: 4.2
 
 - type: entity
   id: WallLaboratotyAlt
